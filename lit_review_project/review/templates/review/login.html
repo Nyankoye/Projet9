@@ -1,0 +1,41 @@
+{% extends 'review/base.html' %}
+{% load crispy_forms_tags %}
+{% block content %}
+    {% if not user.is_authenticated %}
+        <div class="content-section col-md-4 text-center">
+            <fieldset class="form-group">
+                <legend class="border-bottom mb-4">Inscrivez-vous maintenant</legend>
+            </fieldset>
+            <div class="form-group">
+                <a href="{% url 'register' %}" class="btn btn-outline-info">S'inscrire</a>
+            </div>
+        </div>
+    {% endif %}
+    <div class="col-md-1">
+
+    </div>
+    <div class="content-section col-md-5">
+        <form method="POST" action="{% url 'login' %}">
+            {% csrf_token %}
+
+            {% if user.is_authenticated %}
+                <fieldset class="form-group">
+                    <legend class="border-bottom mb-4">Deconnectez-vous</legend>
+                </fieldset>
+                <div class="form-group">
+                    <a class="btn btn-outline-info" href=" {% url 'logout' %} ">Se deconnecter</a>
+                </div>
+            {% else %}
+                <fieldset class="form-group">
+                    <legend class="border-bottom mb-4">Connectez-vous</legend>
+                    {{ form|crispy }}
+                </fieldset>
+                <div class="form-group">
+                    <button class="btn btn-outline-info" type="submit">Se connecter</button>
+                </div>
+            {% endif %}
+            
+        </form>
+    </div>
+
+{% endblock content %}

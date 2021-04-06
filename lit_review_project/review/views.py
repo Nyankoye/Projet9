@@ -1,25 +1,26 @@
-from django.shortcuts import render
-from django.contrib.auth.forms import UserCreationForm
-from django.contrib.auth import authenticate, login
+from django.shortcuts import render, redirect
+from django.contrib.auth.decorators import login_required
+from django.contrib import messages
+from .forms import UserRegisterForm
 
 # Create your views here.
 
+@login_required
 def index(request):
     return render(request, 'review/index.html')
 
 def register(request):
 
     if request.method == 'POST':
-        form = UserCreationForm(request.POST)
+        form = UserRegisterForm(request.POST)
         if form.is_valid():
             form.save() # register new user in the database
             username = form.cleaned_data.get('username')
-            password = form.cleaned_data.get('password1')
-            user = authenticate(username=username,password=password)
-            login(request, user)
-            return render(request, 'registration/login.html')
+            message = "Bienvenu {} ! Votre compte a été créé avec succès !".format(username)
+            messages.success(request, message)
+            return redirect('index')
     else:
-        form = UserCreationForm()
+        form = UserRegisterForm()
     
     context = {'form':form}
-    return render(request, 'registration/register.html', context)
+    return render(request, 'review/register.html', context)
