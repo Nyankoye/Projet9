@@ -1,0 +1,11 @@
+<article class="media content-section">
+    <div class="media-body">
+      <div class="article-metadata">
+        <a class="mr-2" href="#">{{ ticket.user }}</a>
+        <small class="text-muted">{{ ticket.time_created}}</small>
+      </div>
+      <h2><a class="article-title" href="#">{{ ticket.title}}</a></h2>
+      <p class="article-content">{{ ticket.description }}</p>
+      <img class="rounded mx-auto d-block" src="{{ ticket.image.url }}" height="270px">
+    </div>
+</article>

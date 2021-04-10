@@ -1,0 +1,32 @@
+<article class="media content-section col-md-8">
+  <div class="media-body">
+    <div class="article-metadata">
+      <a class="mr-2" href="#">{{ review.user }}</a>
+      <small class="text-muted">{{ review.rating }}</small>
+      <small class="text-muted">{{ review.time_created }}</small>
+    </div>
+    <h2><a class="article-title" href="#">{{ review.headline}}</a></h2>
+    <p class="article-content">{{ review.body }}</p>
+
+    <div class="row h-100 justify-content-center align-items-center">
+      <article class="media content-section col-md-10 ">
+        <div class="media-body">
+          <div class="article-metadata">
+            <a class="mr-2" href="#">{{ review.ticket.user }}</a>
+            <small class="text-muted">{{ review.ticket.time_created}}</small>
+          </div>
+          <h2 class="article-title">{{ review.ticket.title}}</h2>
+          <p class="article-content">{{ review.ticket.description }}</p>
+          <div class="d-flex justify-content-between">
+            <img class="rounded" src="{{ review.ticket.image.url }}" height="230px">
+            <a class="btn btn-outline-info align-self-center" href="#">Créer une critique</a>
+          </div>
+        </div>
+      </article>
+    </div>
+  </div>
+</article>
+
+
+
+

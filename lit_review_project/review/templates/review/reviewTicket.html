@@ -1,0 +1,22 @@
+{% extends 'review/base.html' %}
+{% load crispy_forms_tags %}
+{% block content %}
+    <div class="content-section col-md-8">
+        <form method="POST" action="{% url 'reviewTicket' ticket_id=ticket_id%}" enctype="multipart/form-data">
+            {% csrf_token %}
+            <fieldset class="form-group">
+                <legend class="border-bottom mb-4">Article/Livre</legend>
+                <p>{{ ticket.title|as_crispy_field }}</p>
+                <div>{{ ticket.description|as_crispy_field }}</div>
+                <img class="rounded mx-auto d-block" src="{{ ticket.image.url }}" height="230px">
+            </fieldset>
+            <fieldset class="form-group">
+                <legend class="border-bottom mb-4">Critique</legend>
+                {{ form|crispy }}
+            </fieldset>
+            <div class="form-group">
+                <button class="btn btn-outline-info" type="submit">Envoyer</button>
+            </div>
+        </form>
+    </div>
+{% endblock %}
