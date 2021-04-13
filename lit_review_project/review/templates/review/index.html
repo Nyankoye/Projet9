@@ -5,7 +5,11 @@
         <a class="btn btn-outline-info" href=" {% url 'ticket' %} ">Demander une critique</a>
         <a class="btn btn-outline-info" href="{% url 'review' %}" >Créer une critique</a>
     </div>
-    {% for review in reviews %}
-        {% include 'review/review_snippet.html' %}
+    {% for ticket in tickets %}
+        {% if ticket.reviews.all %}
+            {% include 'review/review_snippet.html' %}
+        {% else %}
+            {% include 'review/ticket_snippet.html' %}
+        {% endif %}
     {% endfor %}
 {% endblock %}

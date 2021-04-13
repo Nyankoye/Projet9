@@ -2,7 +2,7 @@
 {% load crispy_forms_tags %}
 {% block content %}
     <div class="content-section col-md-8">
-        <form method="POST" action="{% url 'reviewTicket' ticket_id=ticket.id %}" enctype="multipart/form-data">
+        <form method="POST" action="{% url 'review_update' review_id=review.id %}" enctype="multipart/form-data">
             {% csrf_token %}
             <p>Vous êtes en train de poster en réponse à</p>
             <div class="content-section">

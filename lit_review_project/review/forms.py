@@ -1,5 +1,5 @@
 from django import forms
-from django.forms import ModelForm, ImageField
+from django.forms import ModelForm, ImageField, NumberInput
 from django.contrib.auth.models import User
 from django.contrib.auth.forms import UserCreationForm
 from .models import Review, Ticket
@@ -16,6 +16,9 @@ class FormReview(ModelForm):
     class Meta:
         model = Review
         fields = ['headline', 'rating', 'body']
+        widgets = {
+            'rating': NumberInput(attrs={'maxlength': '5'}),
+        }
 
 class FormTicket(ModelForm):
     class Meta:

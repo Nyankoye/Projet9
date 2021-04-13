@@ -1,0 +1,56 @@
+{% extends 'review/base.html' %}
+{% load crispy_forms_tags %}
+{% block content %}
+    <div class="container">
+        <div class="row justify-content-center">
+            <h2 class="mb-4">Suivre d'autres utilisateurs</h2>
+        </div>
+        <form class="form-inline row justify-content-center" method="POST" action=" {% url 'abonnements' %} ">
+            {% csrf_token %}
+            <input class="form-control rounded mx-2" type="search" placeholder="Nom d'utilisateur" aria-label="Search" name="search">
+            <button class="btn btn-outline-info my-2 my-sm-0" type="submit">Envoyer</button>
+        </form>
+        {% if user_searched %} 
+            <div class="container col-md-10">
+                <table class="table table-bordered mt-4">
+                    <thead>
+                    <tr>
+                        <th>Nom d'utilisateur</th>
+                        <th class="text-center">action</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                        {% for user in users %}
+                            <tr>
+                                <td>{{ user.username }}</td>
+                                <td class="text-center"><a class=" btn btn-danger" type="submit">Abonner</a></td>
+                            </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+          {% endif %}
+        <div class="container col-md-10">
+            <div class="row justify-content-center">
+                <h3 class="mt-4 mb-3">Abonnements</h3>
+            </div>
+            <table class="table table-bordered">
+                <thead>
+                  <tr >
+                    <th>Nom d'utilisateur</th>
+                    <th class="text-center">action</th>
+                  </tr>
+                </thead>
+                <tbody>
+                    {% for follower in followers %}
+                        <tr>
+                            <td>{{ follower.followed_user.username }}</td>
+                            <td class="text-center"><a class=" btn btn-danger" type="submit">Désabonner</a></td>
+                        </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    </div>
+{% endblock %}
+

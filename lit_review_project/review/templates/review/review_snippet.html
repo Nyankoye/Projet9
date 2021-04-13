@@ -1,31 +1,33 @@
-<article class="media content-section col-md-8">
-  <div class="media-body">
-    <div class="article-metadata">
-      <a class="mr-2" href="#">{{ review.user }}</a>
-      <small class="text-muted">{{ review.rating }}</small>
-      <small class="text-muted">{{ review.time_created }}</small>
-    </div>
-    <h2><a class="article-title" href="#">{{ review.headline}}</a></h2>
-    <p class="article-content">{{ review.body }}</p>
+{% for review in ticket.reviews.all %}
+  <article class="media content-section col-md-8">
+    <div class="media-body">
+      <div class="article-metadata d-flex justify-content-between">
+        <span class="text-primary mr-2" >{{ review.user }}</span>
+        <small class="text-muted">{{ review.time_created }}</small>
+      </div>
+      <h2 class="article-title">{{ review.headline}} <span> - {{ review.rating }}</span></h2> 
+      <p class="article-content">{{ review.body }}</p>
 
-    <div class="row h-100 justify-content-center align-items-center">
-      <article class="media content-section col-md-10 ">
-        <div class="media-body">
-          <div class="article-metadata">
-            <a class="mr-2" href="#">{{ review.ticket.user }}</a>
-            <small class="text-muted">{{ review.ticket.time_created}}</small>
+      <div class="row h-100 justify-content-center align-items-center">
+        <article class="media content-section col-md-10 ">
+          <div class="media-body">
+            <div class="article-metadata d-flex justify-content-between">
+              <span class="text-primary mr-2">{{ ticket.user }}</span>
+              <small class="text-muted">{{ ticket.time_created}}</small>
+            </div>
+            <h2 class="article-title">{{ ticket.title}}</h2>
+            <p class="article-content">{{ ticket.description }}</p>
+            <div class="d-flex justify-content-between">
+              <img class="rounded" src="{{ ticket.image.url }}" height="230px">
+              <a class="btn btn-outline-info align-self-center" href=" {% url 'reviewTicket' ticket_id=ticket.id %} ">Créer une critique</a>
+            </div>
           </div>
-          <h2 class="article-title">{{ review.ticket.title}}</h2>
-          <p class="article-content">{{ review.ticket.description }}</p>
-          <div class="d-flex justify-content-between">
-            <img class="rounded" src="{{ review.ticket.image.url }}" height="230px">
-            <a class="btn btn-outline-info align-self-center" href="#">Créer une critique</a>
-          </div>
-        </div>
-      </article>
+        </article>
+      </div>
     </div>
-  </div>
-</article>
+  </article>
+{% endfor %}
+
 
 
 
