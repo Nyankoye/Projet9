@@ -10,7 +10,7 @@
             <input class="form-control rounded mx-2" type="search" placeholder="Nom d'utilisateur" aria-label="Search" name="search">
             <button class="btn btn-outline-info my-2 my-sm-0" type="submit">Envoyer</button>
         </form>
-        {% if user_searched %} 
+        {% if users %} 
             <div class="container col-md-10">
                 <table class="table table-bordered mt-4">
                     <thead>
@@ -23,13 +23,36 @@
                         {% for user in users %}
                             <tr>
                                 <td>{{ user.username }}</td>
-                                <td class="text-center"><a class=" btn btn-danger" type="submit">Abonner</a></td>
+                                <td class="text-center">
+                                    <form action="{% url 'follow' to_follow_id=user.id %}" method="POST">
+                                        {% csrf_token %}
+                                        <button class=" btn btn-success" type="submit">Abonner</button>
+                                    </form>
+                                </td>
                             </tr>
                         {% endfor %}
                     </tbody>
                 </table>
             </div>
-          {% endif %}
+        {% elif infos %}
+            <div class="container col-md-10">
+                <table class="table table-bordered mt-4">
+                    <thead>
+                    <tr>
+                        <th>Nom d'utilisateur</th>
+                        <th class="text-center">action</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td colspan='2' class="text-center">
+                                    {{infos}}
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        {% endif %}
         <div class="container col-md-10">
             <div class="row justify-content-center">
                 <h3 class="mt-4 mb-3">Abonnements</h3>
@@ -42,12 +65,25 @@
                   </tr>
                 </thead>
                 <tbody>
-                    {% for follower in followers %}
+                    {% if followers.exists %}
+                        {% for follower in followers %}
+                            <tr>
+                                <td>{{ follower.followed_user.username }}</td>
+                                <td class="text-center">
+                                    <form action="{% url 'unfollow' to_unfollow_id=follower.followed_user.id %}" method="POST">
+                                        {% csrf_token %}
+                                        <button class=" btn btn-danger" type="submit">Désabonner</button>
+                                    </form>
+                                </td>
+                            </tr>
+                        {% endfor %}
+                    {% else %}
                         <tr>
-                            <td>{{ follower.followed_user.username }}</td>
-                            <td class="text-center"><a class=" btn btn-danger" type="submit">Désabonner</a></td>
+                            <td colspan='2' class="text-center">
+                                Abonnez-vous à un utilisateur en le cherchant dans la barre de navigation
+                            </td>
                         </tr>
-                    {% endfor %}
+                    {% endif %}
                 </tbody>
             </table>
         </div>

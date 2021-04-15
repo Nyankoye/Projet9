@@ -1,0 +1,17 @@
+{% extends 'review/base.html' %}
+{% load crispy_forms_tags %}
+{% block content %}
+<br>
+<div class="row">
+	<div class="col-md-6">
+		<div class="card card-body">
+			<p>Etes-vous sure de vouloir supprimer cette critique: "{{review}}"?</p>
+			<form action="{% url 'review_delete' review_id=review.id %}" method="POST">
+				{% csrf_token %}
+				<a class="btn btn-warning" href="{% url 'posts' %}">NON</a>
+				<input class="btn btn-danger" type="submit" name="Confirm" value="OUI">
+			</form>
+		</div>
+	</div>
+</div>
+{% endblock %}

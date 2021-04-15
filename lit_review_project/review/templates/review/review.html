@@ -6,11 +6,11 @@
             {% csrf_token %}
             <fieldset class="form-group">
                 <legend class="border-bottom mb-4">Article/Livre</legend>
-                {{ formTicket|crispy }}
+                {{ form_ticket|crispy }}
             </fieldset>
             <fieldset class="form-group">
                 <legend class="border-bottom mb-4">Critique</legend>
-                {{ formReview|crispy }}
+                {{ form_review|crispy }}
             </fieldset>
             <div class="form-group">
                 <button class="btn btn-outline-info" type="submit">Envoyer</button>

@@ -2,7 +2,7 @@
     <div class="media-body">
       <div class="article-metadata d-flex justify-content-between">
         <span class="text-primary mr-2" href="#">{{ ticket.user }}  <span class="text-dark">a demandé une critique</span></span>
-        <small class="text-muted">{{ ticket.time_created}}</small>
+        <small class="text-muted">{{ ticket.time_created|date:'H:i, d F Y'}}</small>
       </div>
       <h2 class="article-title">{{ ticket.title}}</h2>
       <p class="article-content">{{ ticket.description }}</p>

@@ -1,111 +1,115 @@
 {% extends 'review/base.html' %}
 {% block content %}
-    {% for ticket in tickets %}
-        {% if ticket.reviews.all %}
-            {% for review in ticket.reviews.all %}
-                <article class="media content-section col-md-8">
+{% for post in posts %}
+    {% if post.headline %}
+        <article class="media content-section col-md-8">
+            <div class="media-body">
+                <div class="article-metadata d-flex justify-content-between">
+                <span class="text-primary mr-2" >{{ post.user }}</span>
+                <small class="text-muted">{{ post.time_created|date:'H:i, d F Y' }}</small>
+                </div>
+                <h4 class="article-title mt-3 mb-3">{{ post.headline}} -
+                    <span class="fa fa-star{% if post.rating < 1 %}-o empty{% endif %}" style="color: orange;"></span>
+                    <span class="fa fa-star{% if post.rating < 2 %}-o empty{% endif %}" style="color: orange;"></span>
+                    <span class="fa fa-star{% if post.rating < 3 %}-o empty{% endif %}" style="color: orange;"></span>
+                    <span class="fa fa-star{% if post.rating < 4 %}-o empty{% endif %}" style="color: orange;"></span>
+                    <span class="fa fa-star{% if post.rating < 5 %}-o empty{% endif %}" style="color: orange;"></span>
+                </h4>  
+                <p class="article-content">{{ post.body }}</p>
+        
+                <div class="row h-100 justify-content-center align-items-center">
+                <article class="media content-section col-md-10 ">
                     <div class="media-body">
                         <div class="article-metadata d-flex justify-content-between">
-                        <span class="text-primary mr-2" >{{ review.user }}</span>
-                        <small class="text-muted">{{ review.time_created }}</small>
+                            <span class="text-primary mr-2">{{ post.ticket.user }}</span>
+                            <small class="text-muted">{{ post.ticket.time_created|date:'H:i, d F Y'}}</small>
                         </div>
-                        <h2 class="article-title">{{ review.headline}} <span> - {{ review.rating }}</span></h2> 
-                        <p class="article-content">{{ review.body }}</p>
-                
-                        <div class="row h-100 justify-content-center align-items-center">
-                        <article class="media content-section col-md-10 ">
-                            <div class="media-body">
-                                <div class="article-metadata d-flex justify-content-between">
-                                    <span class="text-primary mr-2">{{ ticket.user }}</span>
-                                    <small class="text-muted">{{ ticket.time_created}}</small>
-                                </div>
-                                <h2 class="article-title">{{ ticket.title}}</h2>
-                                <p class="article-content">{{ ticket.description }}</p>
-                                <div class="d-flex justify-content-between">
-                                    <img class="rounded" src="{{ ticket.image.url }}" height="230px">
-                                </div>
-                            </div>
-                        </article>
-                        </div>
-                        <div class="d-flex justify-content-around">
-                            <a class="btn btn-outline-info" href=" {% url 'review_update' review_id=review.id %} ">Modifier</a>
-                            <a class="btn btn-outline-info" data-target="#delete_review" data-toggle="modal" href="">Supprimer</a>
+                        <h4 class="article-title mt-3 mb-3">{{ post.ticket.title}}</h4>
+                        <p class="article-content">{{ post.ticket.description }}</p>
+                        <div class="d-flex justify-content-between" enctype="multipart/form-data">
+                            <img class="rounded" src="{{ post.ticket.image.url }}" height="230px">
                         </div>
                     </div>
                 </article>
-                <!-- Modal Suppression de critique  -->
-                <div class="modal" tabindex="-1" role="dialog" id="delete_review">
-                    <div class="modal-dialog" role="document">
-                        <div class="modal-content">
-                            <div class="modal-header">
-                                <h5 class="modal-title">Suppression de ticket</h5>
-                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                    <span aria-hidden="true">&times;</span>
-                                </button>
-                            </div>
-                            <div class="row">
-                                <div class="col-md-12">
-                                    <div class="modal-body">
-                                        <p>Etes-vous sure de vouloir supprimer cette Critique: {{review.headline}} ?</p>
-                                        <div class="modal-footer">
-                                            <form action="{% url 'review_delete' review_id=review.id %}" method="POST">
-                                                {% csrf_token %}
-                                                <button type="button" class="btn btn-warning" data-dismiss="modal">NON</button>
-                                                <input class="btn btn-danger" type="submit" name="Confirm" value="OUI">
-                                            </form>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
+                </div>
+                <div class="d-flex justify-content-around">
+                    <a class="btn btn-outline-info" href=" {% url 'review_update' review_id=post.id %} ">Modifier</a>
+                    <a class="btn btn-outline-info" data-target="#delete_review" data-toggle="modal" href="">Supprimer</a>
+                </div>
+            </div>
+        </article>
+        <!-- Modal Suppression de critique  -->
+        <div class="modal" tabindex="-1" role="dialog" id="delete_review">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title">Suppression de ticket</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
                     </div>
-                </div>
-            {% endfor %}
-        {% else %}
-            <article class="media content-section col-md-8">
-                <div class="media-body">
-                <div class="article-metadata d-flex justify-content-between">
-                    <span class="text-primary mr-2" href="#">{{ ticket.user }}  <span class="text-dark">a demandé une critique</span></span>
-                    <small class="text-muted">{{ ticket.time_created}}</small>
-                </div>
-                <h2 class="article-title">{{ ticket.title}}</h2>
-                <p class="article-content">{{ ticket.description }}</p>
-                <div class="d-flex justify-content-between">
-                    <img class="rounded" src="{{ ticket.image.url }}" height="230px">
-                    <div class="form-group text-center">
-                        <a class="btn btn-outline-info" href=" {% url 'ticket_update' ticket_id=ticket.id %} ">Modifier</a>
-                        <a class="btn btn-outline-info" data-target="#delete_title" data-toggle="modal" href="">Supprimer</a>
-                    </div>
-                </div>
-                </div>
-            </article>
-            <!-- Modal Suppression de ticket  -->
-            <div class="modal" tabindex="-1" role="dialog" id="delete_title">
-                <div class="modal-dialog" role="document">
-                    <div class="modal-content">
-                        <div class="modal-header">
-                            <h5 class="modal-title">Suppression de ticket</h5>
-                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                <span aria-hidden="true">&times;</span>
-                            </button>
-                        </div>
-                        <div class="row">
-                            <div class="col-md-12">
-                                <div class="modal-body">
-                                    <p>Etes-vous sure de vouloir supprimer ce ticket: {{ticket.title}} ?</p>
-                                    <div class="modal-footer">
-                                        <form action="{% url 'ticket_delete' ticket_id=ticket.id %}" method="POST">
-                                            {% csrf_token %}
-                                            <button type="button" class="btn btn-warning" data-dismiss="modal">NON</button>
-                                            <input class="btn btn-danger" type="submit" name="Confirm" value="OUI">
-                                        </form>
-                                    </div>
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="modal-body">
+                                <p>Etes-vous sure de vouloir supprimer cette Critique: {{post.headline}} ?</p>
+                                <div class="modal-footer">
+                                    <form action="{% url 'review_delete' review_id=post.id %}" method="POST">
+                                        {% csrf_token %}
+                                        <button type="button" class="btn btn-warning" data-dismiss="modal">NON</button>
+                                        <input class="btn btn-danger" type="submit" name="Confirm" value="OUI">
+                                    </form>
                                 </div>
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
-        {% endif %}
-    {% endfor %}
+        </div>
+    {% else %}
+        <article class="media content-section col-md-8">
+            <div class="media-body">
+            <div class="article-metadata d-flex justify-content-between">
+                <span class="text-primary mr-2">{{ post.user }}</span>
+                <small class="text-muted">{{ post.time_created}}</small>
+            </div>
+            <h2 class="article-title">{{ post.title}}</h2>
+            <p class="article-content">{{ post.description }}</p>
+            <div class="d-flex justify-content-between">
+                <img class="rounded" src="{{ post.image.url }}" height="230px">
+                <div class="form-group text-center">
+                    <a class="btn btn-outline-info" href=" {% url 'ticket_update' ticket_id=post.id %} ">Modifier</a>
+                    <a class="btn btn-outline-info" data-target="#delete_title" data-toggle="modal" href="">Supprimer</a>
+                </div>
+            </div>
+            </div>
+        </article>
+        <!-- Modal Suppression de ticket  -->
+        <div class="modal" tabindex="-1" role="dialog" id="delete_title">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title">Suppression de ticket</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="modal-body">
+                                <p>Etes-vous sure de vouloir supprimer ce ticket: {{post.title}} ?</p>
+                                <div class="modal-footer">
+                                    <form action="{% url 'ticket_delete' ticket_id=post.id %}" method="POST">
+                                        {% csrf_token %}
+                                        <button type="button" class="btn btn-warning" data-dismiss="modal">NON</button>
+                                        <input class="btn btn-danger" type="submit" name="Confirm" value="OUI">
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    {% endif %}
+{% endfor %}
 {% endblock %}
