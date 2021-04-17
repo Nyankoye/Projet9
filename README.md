@@ -6,8 +6,8 @@ Réalisation d’une application web à l’aide de django permettant à une com
  3. Activez l'environnement virtuel en utilisant la commande: source env/bin/activate 
  4. Installer les paquets Python répertoriés dans le fichier requirements.txt en utilisant la commande : pip install -r requirements.txt
  5. Deplacez-vous  dans le fichier lit_review_project en utilisant la commande : cd lit_review_project
- 6. Utliser la commande : python manage.py migrate pour charger le contenu de la base de données
- 7. Utiliser la commande : python manage.py runserver pour lancer le serveur
+ 6. Charger le contenu de la base de données en utilisant la commande : python manage.py migrate
+ 7. Lancer le serveur en utilisant la commande : python manage.py runserver
  8. Tapez cette adresse : http://127.0.0.1:8000/ dans votre navigateur pour commencer à utiliser la l'application web
 
 ## Génération Fichier flake8
