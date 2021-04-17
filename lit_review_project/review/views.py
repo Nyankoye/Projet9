@@ -22,9 +22,15 @@ def index(request):
         # get followers of connected user
         followers = UserFollows.objects.filter(user=request.user.id)
         followed_user_ids = [follower.followed_user.id for follower in followers]
-        tickets = Ticket.objects.filter(user=request.user.id).order_by('-time_created') | Ticket.objects.filter(
-            user__in=followed_user_ids).order_by('-time_created')
-        context['tickets'] = tickets
+        tickets = Ticket.objects.filter(user=request.user.id) | Ticket.objects.filter(
+            user__in=followed_user_ids)
+        reviews = Review.objects.filter(ticket__in=[ticket for ticket in tickets])
+
+        context['posts'] = sorted(
+            chain(reviews, tickets),
+            key=lambda post: post.time_created,
+            reverse=True
+        )
 
     return render(request, 'review/index.html', context)
 
@@ -203,12 +209,11 @@ def posts(request):
         context['reviews'] = reviews
 
         # combine and sort the two types of posts
-        posts = sorted(
+        context['posts'] = sorted(
             chain(reviews, tickets),
             key=lambda post: post.time_created,
             reverse=True
         )
-        context['posts'] = posts
 
     return render(request, 'review/posts.html', context)
 

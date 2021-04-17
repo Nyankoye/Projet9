@@ -1,14 +1,14 @@
 <article class="media content-section col-md-8">
     <div class="media-body">
       <div class="article-metadata d-flex justify-content-between">
-        <span class="text-primary mr-2" href="#">{{ ticket.user }}  <span class="text-dark">a demandé une critique</span></span>
-        <small class="text-muted">{{ ticket.time_created|date:'H:i, d F Y'}}</small>
+        <span class="text-primary mr-2" href="#">{{ post.user }}  <span class="text-dark">a demandé une critique</span></span>
+        <small class="text-muted">{{ post.time_created|date:'H:i, d F Y'}}</small>
       </div>
-      <h2 class="article-title">{{ ticket.title}}</h2>
-      <p class="article-content">{{ ticket.description }}</p>
+      <h2 class="article-title">{{ post.title}}</h2>
+      <p class="article-content">{{ post.description }}</p>
       <div class="d-flex justify-content-between">
-        <img class="rounded" src="{{ ticket.image.url }}" height="230px">
-        <a class="btn btn-outline-info align-self-center" href=" {% url 'reviewTicket' ticket_id=ticket.id %} ">Créer une critique</a>
+        <img class="rounded" src="{{ post.image.url }}" height="230px">
+        <a class="btn btn-outline-info align-self-center" href=" {% url 'reviewTicket' ticket_id=post.id %} ">Créer une critique</a>
       </div>
     </div>
 </article>

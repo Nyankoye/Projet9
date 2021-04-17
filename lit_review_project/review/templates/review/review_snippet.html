@@ -1,39 +1,37 @@
-{% for review in ticket.reviews.all %}
-  <article class="media content-section col-md-8">
-    <div class="media-body">
-      <div class="article-metadata d-flex justify-content-between">
-        <span class="text-primary mr-2" >{{ review.user }}</span>
-        <small class="text-muted">{{ review.time_created|date:'H:i, d F Y' }}</small>
-      </div>
-
-      <h4 class="article-title mt-3 mb-3">{{ review.headline}} -
-        <span class="fa fa-star{% if review.rating < 1 %}-o empty{% endif %}" style="color: orange;"></span>
-        <span class="fa fa-star{% if review.rating < 2 %}-o empty{% endif %}" style="color: orange;"></span>
-        <span class="fa fa-star{% if review.rating < 3 %}-o empty{% endif %}" style="color: orange;"></span>
-        <span class="fa fa-star{% if review.rating < 4 %}-o empty{% endif %}" style="color: orange;"></span>
-        <span class="fa fa-star{% if review.rating < 5 %}-o empty{% endif %}" style="color: orange;"></span>
-      </h4> 
-      <p class="article-content mt-3 mb-3">{{ review.body }}</p>
-
-      <div class="row h-100 justify-content-center align-items-center">
-        <article class="media content-section col-md-10 ">
-          <div class="media-body">
-            <div class="article-metadata d-flex justify-content-between">
-              <span class="text-primary mr-2">{{ ticket.user }}</span>
-              <small class="text-muted">{{ ticket.time_created|date:'H:i, d F Y'}}</small>
-            </div>
-            <h4 class="article-title">{{ ticket.title}}</h4>
-            <p class="article-content">{{ ticket.description }}</p>
-            <div class="d-flex justify-content-between">
-              <img class="rounded" src="{{ ticket.image.url }}" height="230px">
-              <a class="btn btn-outline-info align-self-center" href=" {% url 'reviewTicket' ticket_id=ticket.id %} ">Créer une critique</a>
-            </div>
-          </div>
-        </article>
-      </div>
+<article class="media content-section col-md-8">
+  <div class="media-body">
+    <div class="article-metadata d-flex justify-content-between">
+      <span class="text-primary mr-2" >{{ post.user }}</span>
+      <small class="text-muted">{{ post.time_created|date:'H:i, d F Y' }}</small>
     </div>
-  </article>
-{% endfor %}
+
+    <h4 class="article-title mt-3 mb-3">{{ post.headline}} -
+      <span class="fa fa-star{% if post.rating < 1 %}-o empty{% endif %}" style="color: orange;"></span>
+      <span class="fa fa-star{% if post.rating < 2 %}-o empty{% endif %}" style="color: orange;"></span>
+      <span class="fa fa-star{% if post.rating < 3 %}-o empty{% endif %}" style="color: orange;"></span>
+      <span class="fa fa-star{% if post.rating < 4 %}-o empty{% endif %}" style="color: orange;"></span>
+      <span class="fa fa-star{% if post.rating < 5 %}-o empty{% endif %}" style="color: orange;"></span>
+    </h4> 
+    <p class="article-content mt-3 mb-3">{{ post.body }}</p>
+
+    <div class="row h-100 justify-content-center align-items-center">
+      <article class="media content-section col-md-10 ">
+        <div class="media-body">
+          <div class="article-metadata d-flex justify-content-between">
+            <span class="text-primary mr-2">{{ post.ticket.user }}</span>
+            <small class="text-muted">{{ post.ticket.time_created|date:'H:i, d F Y'}}</small>
+          </div>
+          <h4 class="article-title">{{ post.ticket.title}}</h4>
+          <p class="article-content">{{ post.ticket.description }}</p>
+          <div class="d-flex justify-content-between">
+            <img class="rounded" src="{{ post.ticket.image.url }}" height="230px">
+            <a class="btn btn-outline-info align-self-center" href=" {% url 'reviewTicket' ticket_id=post.ticket.id %} ">Créer une critique</a>
+          </div>
+        </div>
+      </article>
+    </div>
+  </div>
+</article>
 
 
 

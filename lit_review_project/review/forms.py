@@ -23,7 +23,7 @@ class FormReview(ModelForm):
     """Classe permettant de créer le formulaire de creation de critique"""
 
     class Meta:
-        """Cette classe permet permet de specifier certain comportement 
+        """Cette classe permet permet de specifier certain comportement
         du formulaire de critique."""
         model = Review
         fields = ['headline', 'rating', 'body']
@@ -36,7 +36,7 @@ class FormTicket(ModelForm):
     """Classe permettant de créer le formulaire d'inscription"""
 
     class Meta:
-        """Cette classe permet permet de specifier certain comportement 
+        """Cette classe permet permet de specifier certain comportement
         du formulaire de creation de ticket."""
         model = Ticket
         fields = ['title', 'description', 'image']
