@@ -1,48 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="455e166c-ddb6-4f1e-b188-ede49ec00fc3" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/lit_review_project/db.sqlite3" beforeDir="false" afterPath="$PROJECT_DIR$/lit_review_project/db.sqlite3" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lit_review_project/lit_review_project/settings.py" beforeDir="false" afterPath="$PROJECT_DIR$/lit_review_project/lit_review_project/settings.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lit_review_project/lit_review_project/urls.py" beforeDir="false" afterPath="$PROJECT_DIR$/lit_review_project/lit_review_project/urls.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lit_review_project/media/img/Capture_9EZ0lLY.PNG" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/lit_review_project/media/img/Capture_GLaBecE.PNG" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/lit_review_project/media/img/Capture_diMSL60.PNG" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/lit_review_project/media/img/EIGSI-LRCASA.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/lit_review_project/media/img/EIGSI-LRCASA_uIE3ojg.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/lit_review_project/media/img/EIGSI-LRCASA_wyoFUxD.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/lit_review_project/media/img/Modelisation_V5_1O202o1.PNG" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/lit_review_project/media/img/Modelisation_V5_3valbTp.PNG" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/lit_review_project/media/img/Modelisation_V5_7trxI6v.PNG" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/lit_review_project/media/img/Modelisation_V5_kPaST3D.PNG" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/lit_review_project/media/img/Modelisation_V5_wJRTtGW.PNG" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/lit_review_project/media/img/Récépissé.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/lit_review_project/media/img/hunger_games.PNG" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/lit_review_project/media/img/hunger_games_5ekkdct.PNG" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/lit_review_project/media/img/hunger_games_Mnrclv4.PNG" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/lit_review_project/media/img/hunger_games_YtSNCmt.PNG" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/lit_review_project/media/img/hunger_games_bG0MLEn.PNG" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/lit_review_project/media/img/hunger_games_jjLHRe6.PNG" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/lit_review_project/media/img/hunger_games_puuQ9JE.PNG" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/lit_review_project/media/img/hunger_games_sFmdyQk.PNG" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/lit_review_project/media/img/téléchargement.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/lit_review_project/media/img/voiture-electrique-compsants.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/lit_review_project/media/img/voiture-electrique-compsants_ecJW0Fy.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/lit_review_project/review/admin.py" beforeDir="false" afterPath="$PROJECT_DIR$/lit_review_project/review/admin.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lit_review_project/review/forms.py" beforeDir="false" afterPath="$PROJECT_DIR$/lit_review_project/review/forms.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lit_review_project/review/models.py" beforeDir="false" afterPath="$PROJECT_DIR$/lit_review_project/review/models.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lit_review_project/review/static/review/main.css" beforeDir="false" afterPath="$PROJECT_DIR$/lit_review_project/review/static/review/main.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lit_review_project/review/templates/review/abonnement.html" beforeDir="false" afterPath="$PROJECT_DIR$/lit_review_project/review/templates/review/abonnement.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lit_review_project/review/templates/review/base.html" beforeDir="false" afterPath="$PROJECT_DIR$/lit_review_project/review/templates/review/base.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lit_review_project/review/templates/review/login.html" beforeDir="false" afterPath="$PROJECT_DIR$/lit_review_project/review/templates/review/login.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lit_review_project/review/templates/review/posts.html" beforeDir="false" afterPath="$PROJECT_DIR$/lit_review_project/review/templates/review/posts.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lit_review_project/review/templates/review/review.html" beforeDir="false" afterPath="$PROJECT_DIR$/lit_review_project/review/templates/review/review.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lit_review_project/review/templates/review/review_snippet.html" beforeDir="false" afterPath="$PROJECT_DIR$/lit_review_project/review/templates/review/review_snippet.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lit_review_project/review/templates/review/ticket_snippet.html" beforeDir="false" afterPath="$PROJECT_DIR$/lit_review_project/review/templates/review/ticket_snippet.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lit_review_project/review/tests.py" beforeDir="false" afterPath="$PROJECT_DIR$/lit_review_project/review/tests.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lit_review_project/review/urls.py" beforeDir="false" afterPath="$PROJECT_DIR$/lit_review_project/review/urls.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lit_review_project/review/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/lit_review_project/review/views.py" afterDir="false" />
-    </list>
+    <list default="true" id="455e166c-ddb6-4f1e-b188-ede49ec00fc3" name="Default Changelist" comment="" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
